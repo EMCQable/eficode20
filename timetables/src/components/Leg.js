@@ -1,21 +1,25 @@
 import React from 'react'
+import timeconversion from './../tools/timeconverter'
 
 const Leg = (props) => (
   <div>
     <p>
-      DO THE FOLLOWING: {props.leg.mode}
+      USE TRANSPORT: {props.leg.mode}
     </p>
     <p>
-    START AT {props.leg.startTime}
+    START AT {timeconversion.convert(props.leg.startTime)}
     </p>
+    <p>
     GO FROM {props.leg.from.name}
-    <p>
     </p>
+    {props.leg.route&& <p>
+    WITH {props.leg.route.gtfsId.slice(5)}
+    </p>}
     <p>
     TO {props.leg.to.name}
     </p>
     <p>
-      YOU SHOULD ARRIVE AT {props.leg.endTime}
+      YOU SHOULD ARRIVE AT {timeconversion.convert(props.leg.endTime)}
     </p>
     <br></br>
   </div>

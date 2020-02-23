@@ -1,27 +1,30 @@
 import ApolloClient, { gql } from 'apollo-boost';
+import findPlace from './Locations'
 
 const client = new ApolloClient({
   uri: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql'
 })
-var fromPlace = 'Teekkarikylä, Espoo'
-var fromLat = '60.188336'
-var fromLon = '24.834901'
 
-var toPlace = 'Pohjoinen Rautatienkatu 25'
+var toPlace = 'Pohjoinen Rautatienkatu 25, Eficode Office'
 var toLat = '60.169443'
 var toLon = '24.926077'
 
 var numItineraries = '2'
+var minTransfertime = '120'
 
-const query = gql`
-{
+const SOME_ITINERARY = gql`
+query findCoordinatesByPlaceName(
+  $fromLon: Float!,
+  $fromLat: Float!
+  ){
   plan(
-    fromPlace: "${fromPlace}::${fromLat},${fromLon}",
+    from: {lon: $fromLon, lat:$fromLat}
     toPlace: "${toPlace}::${toLat},${toLon}",
-    numItineraries: ${numItineraries}
+    numItineraries: ${numItineraries},
+    minTransferTime: ${minTransfertime},
   ) {
     itineraries{
-      startTime
+      startTime,
       walkDistance,
       duration,
       legs {
@@ -48,9 +51,21 @@ const query = gql`
 }
 `
 
-const getItineraries = async() => {
-  const response = await client.query({ query })
+
+
+const getItineraries = async (startLocation) => {
+  const geoLocated = await findPlace.getLocation(startLocation)
+  var fromLat = geoLocated.bbox[1]
+  var fromLon = geoLocated.bbox[0]
+  //fromPlace = geoLocated
+  const response = await client.query({
+    query: SOME_ITINERARY,
+    variables: {
+      fromLat,
+      fromLon
+    }
+  })
   return response.data
 }
 
-export default {getItineraries}
+export default { getItineraries }

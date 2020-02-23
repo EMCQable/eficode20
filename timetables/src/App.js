@@ -7,15 +7,33 @@ import InstructionGroup from './components/InstructionGroup'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { itineraries: null };
+    this.state = {
+      itineraries: null,
+      value: 'Submit this for a new origin'
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
+
   async componentDidMount() {
-    var itineraries = await ItineraryService.getItineraries()
+    var itineraries = await ItineraryService.getItineraries('Teekkarikylä')
     this.setState({
       itineraries
     })
-    console.log(this.state.itineraries)
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  async handleSubmit() {
+    console.log('fuck')
+    var itineraries = await ItineraryService.getItineraries(this.state.value)
+    this.setState({
+      itineraries
+    })
   }
 
   render() {
@@ -25,10 +43,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Timetables to get to Eficode Headquarters</h2>
         </div>
-
+        <form>
+        <textarea value={this.state.value} onChange={this.handleChange} />
+        <button type="button" onClick={this.handleSubmit} text="Change">Change</button>
+        </form>
         {this.state.itineraries &&
           this.state.itineraries.plan.itineraries.map(itinerary => {
-            console.log(itinerary)
             return (
               <div key={itinerary.startTime}>
                 <InstructionGroup startTime={itinerary.startTime} duration={itinerary.duration} legs={itinerary.legs} />
