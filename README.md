@@ -8,4 +8,4 @@ Planned functionalities: This project will use React, ESLint, a UI framework and
 Docker package:
 https://hub.docker.com/repository/docker/emcq/eficode20/
 
-Web site: TODO
+Web site: http://eficode20.s3-website.eu-west-2.amazonaws.com/
