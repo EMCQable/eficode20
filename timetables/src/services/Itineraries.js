@@ -11,14 +11,17 @@ var toPlace = 'Pohjoinen Rautatienkatu 25'
 var toLat = '60.169443'
 var toLon = '24.926077'
 
+var numItineraries = '2'
+
 const query = gql`
 {
   plan(
     fromPlace: "${fromPlace}::${fromLat},${fromLon}",
     toPlace: "${toPlace}::${toLat},${toLon}",
-    numItineraries: 2
+    numItineraries: ${numItineraries}
   ) {
     itineraries{
+      startTime
       walkDistance,
       duration,
       legs {

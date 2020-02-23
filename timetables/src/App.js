@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './1200px-HSL_logo.svg.png';
 import './App.css';
 import ItineraryService from './services/Itineraries'
-import Instruction from './components/Instruction'
+import InstructionGroup from './components/InstructionGroup'
 
 class App extends Component {
   constructor(props) {
@@ -30,8 +30,9 @@ class App extends Component {
           this.state.itineraries.plan.itineraries.map(itinerary => {
             console.log(itinerary)
             return (
-              <div>
-                <Instruction duration={itinerary.duration} legs={itinerary.legs} key={itinerary.duration} />
+              <div key={itinerary.startTime}>
+                <InstructionGroup startTime={itinerary.startTime} duration={itinerary.duration} legs={itinerary.legs} />
+                <br/>
               </div>
             )
           }
