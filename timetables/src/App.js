@@ -29,7 +29,6 @@ class App extends Component {
   }
 
   async handleSubmit() {
-    console.log('fuck')
     var itineraries = await ItineraryService.getItineraries(this.state.value)
     this.setState({
       itineraries

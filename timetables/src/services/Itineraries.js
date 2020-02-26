@@ -14,11 +14,10 @@ var minTransfertime = '120'
 
 const SOME_ITINERARY = gql`
 query findCoordinatesByPlaceName(
-  $fromLon: Float!,
-  $fromLat: Float!
+  $place: String!,
   ){
   plan(
-    from: {lon: $fromLon, lat:$fromLat}
+    fromPlace: $place,
     toPlace: "${toPlace}::${toLat},${toLon}",
     numItineraries: ${numItineraries},
     minTransferTime: ${minTransfertime},
@@ -55,14 +54,15 @@ query findCoordinatesByPlaceName(
 
 const getItineraries = async (startLocation) => {
   const geoLocated = await findPlace.getLocation(startLocation)
+  const placeName = geoLocated.geocoding.query.parsed_text.name
   var fromLat = geoLocated.bbox[1]
   var fromLon = geoLocated.bbox[0]
+  var place = `${placeName}::${fromLat},${fromLon}`
   //fromPlace = geoLocated
   const response = await client.query({
     query: SOME_ITINERARY,
     variables: {
-      fromLat,
-      fromLon
+      place
     }
   })
   return response.data
