@@ -44,7 +44,7 @@ class App extends Component {
           <h2>Timetables to get to Eficode Headquarters</h2>
         </div>
         <form>
-        <textarea value={this.state.value} onChange={this.handleChange} />
+        <textarea value={this.state.value} onChange={this.handleChange} rows="3" className="SearchInput"/>
         <button type="button" onClick={this.handleSubmit} text="Change">Change</button>
         </form>
         {this.state.itineraries &&

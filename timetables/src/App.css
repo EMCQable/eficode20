@@ -17,3 +17,8 @@
   font-size: large;
 }
 
+
+.SearchInput {
+  overflow-wrap: break-word;
+  resize: none;
+}
