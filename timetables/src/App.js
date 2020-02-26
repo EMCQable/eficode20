@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       itineraries: null,
-      value: 'Submit this for a new origin'
+      value: 'Submit location name or an address for a new origin'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
