@@ -9,14 +9,14 @@ const divStyle = {
   boxSizing: 'border-box',
   width: 'fit-content',
   maxWidth: '100vw'
-};
+}
 
 const InstructionGroup = (props) => (
   <div style={divStyle}>
-  <p>THIS ROUTE LASTS FOR {Math.ceil(props.duration/60)} MINUTES AND STARTS AT {timeconversion.convert(props.startTime)}. <br/> THE ORIGIN YOU HAVE CHOSEN IS {props.legs[0].from.name}</p>
-  {props.legs.map(leg => {
-    return(<Leg leg={leg} key={leg.startTime}/>)
-  })}
+    <p>THIS ROUTE LASTS FOR {Math.ceil(props.duration/60)} MINUTES AND STARTS AT {timeconversion.convert(props.startTime)}. <br/> THE ORIGIN YOU HAVE CHOSEN IS {props.legs[0].from.name}</p>
+    {props.legs.map(leg => {
+      return(<Leg leg={leg} key={leg.startTime}/>)
+    })}
   </div>
 )
 

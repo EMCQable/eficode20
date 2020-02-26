@@ -1,4 +1,4 @@
-import ApolloClient, { gql } from 'apollo-boost';
+import ApolloClient, { gql } from 'apollo-boost'
 import findPlace from './Locations'
 
 const client = new ApolloClient({
