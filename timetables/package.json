@@ -12,13 +12,15 @@
     "react-scripts": "0.9.5"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.18.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://eficode20  --delete",
     "eject": "react-scripts eject",
     "lint": "node_modules/.bin/eslint."
   }
