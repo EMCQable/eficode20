@@ -3,8 +3,12 @@ import Leg from './Leg'
 import timeconversion from './../tools/timeconverter'
 
 const divStyle = {
-  margin: '40px',
-  border: '5px solid pink'
+  padding: '5px 20px',
+  margin: '20px auto',
+  border: '5px solid pink',
+  boxSizing: 'border-box',
+  width: 'fit-content',
+  maxWidth: '100vw'
 };
 
 const InstructionGroup = (props) => (
