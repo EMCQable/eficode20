@@ -13,7 +13,7 @@ const divStyle = {
 
 const InstructionGroup = (props) => (
   <div style={divStyle}>
-    <p>THIS ROUTE LASTS FOR {Math.ceil(props.duration/60)} MINUTES AND STARTS AT {timeconversion.convert(props.startTime)}. <br/> THE ORIGIN YOU HAVE CHOSEN IS {props.legs[0].from.name}</p>
+    <p>THIS ROUTE LASTS FOR {Math.ceil(props.duration/60)} MINUTES AND STARTS AT {timeconversion.hoursMinutes(props.startTime)}. <br/> THE ORIGIN YOU HAVE CHOSEN IS {props.legs[0].from.name}</p>
     {props.legs.map(leg => {
       return(<Leg leg={leg} key={leg.startTime}/>)
     })}
