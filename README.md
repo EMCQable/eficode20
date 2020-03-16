@@ -3,12 +3,12 @@ Files for a coding assignment
 
 https://github.com/eficode/assignment-timetables
 
-npm scripts:
-npm dockerdev starts the interactive development server for the react page in a docker container
-npm dockerprod starts a production optimized build in a docker container
-npm predeploy builds react, and docker dev + production builds
-npm deploy builds everything and pushes the react production build to s3 and docker images to dockerhub
-
+*npm scripts:
+    *npm dockerdev starts the interactive development server for the react page in a docker container
+    *npm dockerprod starts a production optimized build in a docker container
+    *npm predeploy builds react, and docker dev + production builds
+    *npm deploy builds everything and pushes the react production build to s3 and docker images to dockerhub
+    *Run tests with: CI=TRUE npm test
 
 
 Docker package:

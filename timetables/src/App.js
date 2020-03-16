@@ -18,7 +18,7 @@ class App extends Component {
 
 
   async componentDidMount() {
-    var itineraries = await ItineraryService.getItineraries('Teekkarikylä')
+    let itineraries = await ItineraryService.getItineraries('Teekkarikylä')
     this.setState({
       itineraries
     })
@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   async handleSubmit() {
-    var itineraries = await ItineraryService.getItineraries(this.state.value)
+    let itineraries = await ItineraryService.getItineraries(this.state.value)
     this.setState({
       itineraries
     })
