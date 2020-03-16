@@ -9,7 +9,7 @@ let toPlace = 'Pohjoinen Rautatienkatu 25, Eficode Office'
 let toLat = '60.169443'
 let toLon = '24.926077'
 
-let numItineraries = '2'
+let numItineraries = '5'
 let minTransfertime = '120'
 
 const SOME_ITINERARY = gql`

@@ -40,22 +40,21 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Timetables to get to Eficode Headquarters</h2>
+          <h2 className="App-header-text">Timetables to get to Eficode Headquarters</h2>
         </div>
         <form>
           <textarea value={this.state.value} onChange={this.handleChange} rows="3" className="SearchInput"/>
           <button type="button" onClick={this.handleSubmit} text="Change">Change</button>
         </form>
+        <div data-uk-accordion>
         {this.state.itineraries &&
           this.state.itineraries.plan.itineraries.map(itinerary => {
             return (
-              <div key={itinerary.startTime}>
-                <InstructionGroup startTime={itinerary.startTime} duration={itinerary.duration} legs={itinerary.legs} />
-                <br/>
-              </div>
+                <InstructionGroup startTime={itinerary.startTime} duration={itinerary.duration} legs={itinerary.legs} key={itinerary.startTime}/>
             )
           }
           )}
+        </div>
 
         {!this.state.itineraries &&
           <p className="App-intro">

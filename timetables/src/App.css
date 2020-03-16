@@ -17,6 +17,9 @@
   font-size: large;
 }
 
+.App-header-text {
+  color: white;
+}
 
 .SearchInput {
   overflow-wrap: break-word;
