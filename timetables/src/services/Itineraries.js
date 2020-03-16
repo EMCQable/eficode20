@@ -53,18 +53,22 @@ query findCoordinatesByPlaceName(
 
 
 const getItineraries = async (startLocation) => {
-  const geoLocated = await findPlace.getLocation(startLocation)
-  const placeName = geoLocated.geocoding.query.parsed_text.name
-  let fromLat = geoLocated.bbox[1]
-  let fromLon = geoLocated.bbox[0]
-  let place = `${placeName}::${fromLat},${fromLon}`
-  const response = await client.query({
-    query: SOME_ITINERARY,
-    variables: {
-      place
-    }
-  })
-  return response.data
+  try {
+    const geoLocated = await findPlace.getLocation(startLocation)
+    const placeName = geoLocated.geocoding.query.parsed_text.name
+    let fromLat = geoLocated.bbox[1]
+    let fromLon = geoLocated.bbox[0]
+    let place = `${placeName}::${fromLat},${fromLon}`
+    const response = await client.query({
+      query: SOME_ITINERARY,
+      variables: {
+        place
+      }
+    })
+    return response.data
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 export default { getItineraries }
