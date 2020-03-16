@@ -1,5 +1,6 @@
 import React from 'react'
 import timeconversion from './../tools/timeconverter'
+import PropTypes from 'prop-types'
 
 const Leg = (props) => (
   <div>
@@ -24,5 +25,9 @@ const Leg = (props) => (
     <br></br>
   </div>
 )
+
+Leg.propTypes = {
+  leg: PropTypes.object
+}
 
 export default Leg

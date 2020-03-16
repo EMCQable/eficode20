@@ -23,10 +23,10 @@
     "dockerprod": "docker run -it -p 80:80 --rm emcq/timetables:prod",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "predeploy": "npm run build && docker build -f Dockerfile-dev -t emcq/timetables:dev . && docker build -f Dockerfile-prod -t emcq/timetables:prod .",
+    "predeploy": "CI=TRUE npm test && npm run build && docker build -f Dockerfile-dev -t emcq/timetables:dev . && docker build -f Dockerfile-prod -t emcq/timetables:prod .",
     "deploy": "aws s3 sync build/ s3://eficode20  --delete",
     "postdeploy": "docker push emcq/timetables:dev && docker push emcq/timetables:prod",
     "eject": "react-scripts eject",
-    "lint": "node_modules/.bin/eslint."
+    "lint": "node_modules/.bin/eslint ."
   }
 }

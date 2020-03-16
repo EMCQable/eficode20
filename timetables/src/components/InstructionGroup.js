@@ -1,6 +1,7 @@
 import React from 'react'
 import Leg from './Leg'
 import timeconversion from './../tools/timeconverter'
+import PropTypes from 'prop-types'
 
 const divStyle = {
   padding: '5px 20px',
@@ -22,5 +23,11 @@ const InstructionGroup = (props) => (
     </div>
   </div>
 )
+
+InstructionGroup.propTypes = {
+  legs: PropTypes.array,
+  duration: PropTypes.number,
+  startTime: PropTypes.number
+}
 
 export default InstructionGroup

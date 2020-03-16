@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value})
+    this.setState({ value: event.target.value })
   }
 
   async handleSubmit() {
@@ -43,17 +43,17 @@ class App extends Component {
           <h2 className="App-header-text">Timetables to get to Eficode Headquarters</h2>
         </div>
         <form>
-          <textarea value={this.state.value} onChange={this.handleChange} rows="3" className="SearchInput"/>
+          <textarea value={this.state.value} onChange={this.handleChange} rows="3" className="SearchInput" />
           <button type="button" onClick={this.handleSubmit} text="Change">Change</button>
         </form>
         <div data-uk-accordion>
-        {this.state.itineraries &&
-          this.state.itineraries.plan.itineraries.map(itinerary => {
-            return (
-                <InstructionGroup startTime={itinerary.startTime} duration={itinerary.duration} legs={itinerary.legs} key={itinerary.startTime}/>
-            )
-          }
-          )}
+          {this.state.itineraries &&
+            this.state.itineraries.plan.itineraries.map(itinerary => {
+              return (
+                <InstructionGroup startTime={itinerary.startTime} duration={itinerary.duration} legs={itinerary.legs} key={itinerary.startTime} />
+              )
+            }
+            )}
         </div>
 
         {!this.state.itineraries &&

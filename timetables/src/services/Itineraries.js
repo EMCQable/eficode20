@@ -67,7 +67,7 @@ const getItineraries = async (startLocation) => {
     })
     return response.data
   } catch (e) {
-    console.log(e)
+    alert(e.message)
   }
 }
 
